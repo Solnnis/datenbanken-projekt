@@ -56,10 +56,9 @@ enthaeltFinal <- unique(enthaeltFinal)
 #'extract the data for the table hashtag
 hashtagFinal <- unique(enthaeltFinal%>%select(name))
   
-## agdbs-edu01.imp.fu-berlin.de
 ## connect to database
 pg = dbDriver("PostgreSQL")
-conn = dbConnect(pg, user="postgres", password="DBS", host="agdbs-edu01.imp.fu-berlin.de", port="5432", dbname="election")
+conn = dbConnect(pg, user="postgres", password="DBS", host="localhost", port="5432", dbname="election")
 
 ##write to tables tweet, hashtag, contains
 dbWriteTable(conn = conn,name = 'hashtag', value =  hashtagFinal, row.names = F, overwrite=FALSE, append=TRUE)
